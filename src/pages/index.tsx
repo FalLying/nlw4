@@ -10,6 +10,7 @@ import styles from "../styles/pages/Home.module.css";
 import { ChallengeBox } from "../components/ChallengeBox";
 import { CountdownProvider } from "../contexts/CountdownContext";
 import { ChallengesProvider } from "../contexts/ChallengesContext";
+import { GithubUserProvider } from "../contexts/GithubUserContext";
 
 interface HomeProps {
   level: number;
@@ -32,7 +33,9 @@ export default function Home(props: HomeProps) {
         <CountdownProvider>
           <section>
             <div>
-              <Profile />
+              <GithubUserProvider>
+                <Profile />
+              </GithubUserProvider>
               <CompletedChallenges />
               <Countdown />
             </div>
