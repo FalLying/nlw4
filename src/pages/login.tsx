@@ -1,17 +1,23 @@
-import ButtonLogin from "../components/ButtonLogin";
-import Card from "../components/CardLogin";
-import InputLogin from "../components/InputLogin";
+import CardLogin from "../components/CardLogin";
 import styled from "styled-components";
+import { GithubUserProvider, GithubData } from "../contexts/GithubUserContext";
+import Head from "next/head";
 
 const Container = styled.div`
-  display: flex;
-
-  flex-flow: row wrap;
-
-  align-items: center;
   background: var(--blue);
+  padding: 0 2rem;
 
-  height: 100vh;
+  & > div {
+    max-width: 1280px;
+    display: flex;
+
+    flex-flow: row wrap;
+
+    align-items: center;
+    height: 100vh;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
 `;
 
 const SideAuth = styled.div`
@@ -21,15 +27,6 @@ const SideAuth = styled.div`
   flex: 1;
   align-items: center;
   justify-content: center;
-  height: 660px;
-
-  & > div > div:first-child {
-    margin-bottom: 3rem;
-  }
-
-  & > div > div:last-child {
-    margin-top: 2rem;
-  }
 `;
 
 const H2 = styled.h2`
@@ -44,30 +41,42 @@ const SideSymbol = styled.div`
     width: 100%;
     height: auto;
   }
-  @media (max-width: 1060px) {
+  @media (max-width: 1120px) {
     display: none;
   }
 `;
 
-export default function Login() {
+const ImgResponsive = styled.img`
+  width: 90%;
+  @media (max-width: 320px) {
+    width: 75%;
+  }
+`;
+
+interface LoginProps {
+  user: GithubData;
+}
+
+export default function Login(props: LoginProps) {
   return (
     <Container>
-      <SideSymbol>
-        <img src="icons/simbolo.svg" alt="" />
-      </SideSymbol>
-      <SideAuth>
-        <div>
+      <Head>
+        <title>Login | move.it</title>
+      </Head>
+      <div>
+        <SideSymbol>
+          <img src="icons/simbolo.svg" alt="" />
+        </SideSymbol>
+        <SideAuth>
           <div>
-            <img src="icons/logo.svg" alt="" />
+            <div>
+              <ImgResponsive src="icons/logo.svg" alt="" />
+            </div>
+            <H2>Bem-vindo</H2>
+            <CardLogin />
           </div>
-          <H2>Bem-vindo</H2>
-          <Card />
-          <div>
-            <InputLogin />
-            <ButtonLogin />
-          </div>
-        </div>
-      </SideAuth>
+        </SideAuth>
+      </div>
     </Container>
   );
 }
