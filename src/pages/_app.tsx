@@ -1,5 +1,6 @@
 import { GetServerSideProps } from "next";
 import { GithubUserProvider } from "../contexts/GithubUserContext";
+import { LeaderboardProvider } from "../contexts/LeaderboardContext";
 import "../styles/global.css";
 
 function MyApp({ Component, pageProps }) {
@@ -8,7 +9,9 @@ function MyApp({ Component, pageProps }) {
       nameUser={pageProps.nameUser}
       avatar_url={pageProps.avatar_url}
     >
-      <Component {...pageProps} />
+      <LeaderboardProvider>
+        <Component {...pageProps} />
+      </LeaderboardProvider>
     </GithubUserProvider>
   );
 }

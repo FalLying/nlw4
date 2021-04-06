@@ -50,7 +50,7 @@ const FieldLogin = () => {
     setUsername(event.target.value);
   };
 
-  const handleClick = () => {
+  const handleClick = async () => {
     setLoggedUser(username);
   };
 

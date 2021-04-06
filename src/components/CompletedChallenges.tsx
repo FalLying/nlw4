@@ -1,13 +1,33 @@
 import { useContext } from "react";
+import styled from "styled-components";
 import { ChallengeContext } from "../contexts/ChallengesContext";
-import styles from "../styles/components/CompletedChallenges.module.css";
+
+const CompletedChallengesContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 3.5rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #d7d8da;
+
+  font-weight: 500;
+
+  span:first-child {
+    font-size: 1.25rem;
+  }
+
+  span:last-child {
+    font-size: 1.5rem;
+  }
+`;
 
 export function CompletedChallenges() {
   const { challengesCompleted } = useContext(ChallengeContext);
   return (
-    <div className={styles.CompletedChallengesContainer}>
+    <CompletedChallengesContainer>
       <span>Desafios completos</span>
       <span>{challengesCompleted}</span>
-    </div>
+    </CompletedChallengesContainer>
   );
 }

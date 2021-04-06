@@ -95,11 +95,11 @@ const Navbar = () => {
             <img src="icons/award.svg" alt="" />
           </Link>
         </Item>
-        <Item className={router.pathname == "/login" && `active`}>
+        {/* <Item className={router.pathname == "/login" && `active`}>
           <Link href="/login">
             <img src="icons/exit.svg" alt="" />
           </Link>
-        </Item>
+        </Item> */}
       </Nav>
     </SideBar>
   );

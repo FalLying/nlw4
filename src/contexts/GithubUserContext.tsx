@@ -34,17 +34,15 @@ export function GithubUserProvider({ children, ...rest }: LoginProviderProps) {
   }
 
   async function setLoggedUser(username: string) {
-    setUser(await getUserGithub(username));
+    const loggedUser = await getUserGithub(username);
+    Cookies.set("avatar_url", String(loggedUser.avatar_url));
+    Cookies.set("name", String(loggedUser.name));
+    setUser(loggedUser);
   }
 
   function getLoggedUser(): GithubData {
     return user;
   }
-
-  useEffect(() => {
-    Cookies.set("avatar_url", String(user.avatar_url));
-    Cookies.set("name", String(user.name));
-  }, [user]);
 
   return (
     <GithubUserContext.Provider

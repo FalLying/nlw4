@@ -1,14 +1,46 @@
 import { useContext } from "react";
 import { ChallengeContext } from "../contexts/ChallengesContext";
-import { GithubUserContext } from "../contexts/GithubUserContext";
-import styles from "../styles/components/Profile.module.css";
+import styled from "styled-components";
 
-export function Profile({ avatar_url, name }) {
-  const { level } = useContext(ChallengeContext);
-  // const { getUser, getUserGithub } = useContext(GithubUserContext);
+interface ProfileProps {
+  small: boolean;
+}
 
+const Container = styled.div.attrs((props: ProfileProps) => ({
+  small: props.small || false,
+}))`
+  display: flex;
+  align-items: center;
+
+  & > img {
+    width: ${(props) => (props.small ? "3rem" : "5.5rem")};
+    height: ${(props) => (props.small ? "3rem" : "5.5rem")};
+    border-radius: 50%;
+  }
+
+  div {
+    margin-left: 1.5rem;
+  }
+
+  div strong {
+    font-size: ${(props) => (props.small ? "1rem" : "1.5rem")};
+    font-weight: 600;
+    color: var(--title);
+  }
+
+  div p {
+    font-size: ${(props) => (props.small ? "0.8rem" : "1rem")};
+    margin-top: 0.5rem;
+  }
+
+  div p img {
+    margin-right: 0.5rem;
+  }
+`;
+
+export function Profile({ avatar_url, name, level, small = false }) {
   return (
-    <div className={styles.profileContainer}>
+    <Container small={small}>
       <img src={avatar_url} alt={name} />
       <div>
         <strong>{name}</strong>
@@ -17,6 +49,6 @@ export function Profile({ avatar_url, name }) {
           Level {level}
         </p>
       </div>
-    </div>
+    </Container>
   );
 }

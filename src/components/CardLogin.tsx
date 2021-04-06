@@ -13,8 +13,6 @@ const CardLogin = styled.div`
   margin: 1.5rem 0;
 `;
 
-const ImgCardLogin = styled.img``;
-
 const TextCardLogin = styled.p`
   color: var(--text-highlight);
   margin: 0 1.5rem;
@@ -23,7 +21,7 @@ const TextCardLogin = styled.p`
 const Card = () => (
   <Container>
     <CardLogin>
-      <ImgCardLogin src="icons/git.svg" />
+      <img src="icons/git.svg" />
       <TextCardLogin>Faça login com seu github para começar</TextCardLogin>
     </CardLogin>
     <div>
